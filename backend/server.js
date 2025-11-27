@@ -1,26 +1,29 @@
-import express from 'express'
+import express, { json } from 'express'
 
 
 const app = express()
 app.use(express.json())
+ 
+const users =[]
 
-app.get('/usuarios',(req , res) => {
-    res.send('usuario safado')
-})
 
 
 app.post('/cadastro',(req,res)=>{
     
+      users.push(req.body)
+      
 
-    console.log(req.body)
+   res.status(201). json(req.body)  
 
-    res.send('user cadastrado')
+
+})
+
+
+
+
+app.get('/usuarios',(req , res) => {
     
-        
-
-    
-
-
+    res.status(200). json(users)
 })
 
 
